@@ -4,7 +4,7 @@ const PuppyCard = ({ data }) => {
     let backUp = 'https://www.petlandflorida.com/wp-content/themes/petland/assets/images/no-available.png'
     return (
         <Fragment>
-            {data.map((dog) => {
+            {data.length > 0 ? data.map((dog) => {
                 return (
                     <div className="card-wrapper" key={dog.PetId}>
                         <img src={dog.Photo === null ? backUp : dog.Photo.BaseUrl + dog.Photo.Size300} />
@@ -23,7 +23,7 @@ const PuppyCard = ({ data }) => {
                         </div>
                     </div>
                 )
-            })}
+            }) : <h1>No Puppies</h1>}
         </Fragment>
     )
 }

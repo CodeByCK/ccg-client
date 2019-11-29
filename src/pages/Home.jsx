@@ -26,17 +26,17 @@ class Home extends Component {
 
     handleChange = (e) => { this.setState({ [e.target.name]: e.target.value }) }
 
-
     render() {
         let locations = [...new Set(this.state.availablePuppies.map(x => x.Location))]
         let petType = [...new Set(this.state.availablePuppies.map(x => x.PetType))]
         let breed = [...new Set(this.state.availablePuppies.map(x => x.BreedName))]
         let gender = [...new Set(this.state.availablePuppies.map(x => x.Gender))]
 
-        let filteredDog = this.state.availablePuppies.filter((dog) => {
-            return dog.Location.includes(this.state.location)
-        })
-
+        let filterDogs = (location, type, breed, gender) => {
+            return (
+                this.state.availablePuppies.filter((x) => x.Location.includes(location) && x.PetType.includes(type) && x.BreedName.includes(breed) && x.Gender.includes(gender))
+            )
+        }
 
         return (
             <Fragment>
@@ -83,7 +83,9 @@ class Home extends Component {
                     </div>
 
                     <section className="card-list">
-                        <PuppyCard data={filteredDog} />
+                        <PuppyCard
+                            data={filterDogs(this.state.location, this.state.petType, this.state.breed, this.state.gender)}
+                        />
                     </section>
 
                 </section>
