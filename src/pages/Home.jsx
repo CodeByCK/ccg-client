@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import axios from 'axios'
 import PuppyCard from '../components/common/PuppyCard'
-import Loader from 'react-loader-spinner'
+import FilterSelect from '../components/common/FilterSelect'
 
 
 class Home extends Component {
@@ -34,7 +34,12 @@ class Home extends Component {
 
         let filterDogs = (location, type, breed, gender) => {
             return (
-                this.state.availablePuppies.filter((x) => x.Location.includes(location) && x.PetType.includes(type) && x.BreedName.includes(breed) && x.Gender.includes(gender))
+                this.state.availablePuppies.filter((x) => (
+                    x.Location.includes(location)
+                    && x.PetType.includes(type)
+                    && x.BreedName.includes(breed)
+                    && x.Gender.includes(gender)
+                ))
             )
         }
 
@@ -51,35 +56,41 @@ class Home extends Component {
                     </div>
                 </section>
 
-                {/* FILTER */}
                 <section className="filter-wrapper">
                     <div className="filter">
                         <span> <i class="fa fa-filter"></i> Filter By:</span>
-
-                        <label for="location-select">LOCATION</label>
-                        <select name="location" id="location-select" onChange={this.handleChange}>
-                            <option value=''>ALL LOCATIONS</option>
-                            {locations.map(locations => <option value={locations}>{locations}</option>)}
-                        </select>
-
-
-                        <label for="pet-type-select">PET TYPE</label>
-                        <select name="petType" id="pet-type-select" onChange={this.handleChange}>
-                            <option value=''>ALL PET TYPES</option>
-                            {petType.map(petType => <option value={petType}>{petType}</option>)}
-                        </select>
-
-                        <label for="breed-select">BREED</label>
-                        <select name="breed" id="breed-select" onChange={this.handleChange}>
-                            <option value=''>ALL PET TYPES</option>
-                            {breed.map(breed => <option value={breed}>{breed}</option>)}
-                        </select>
-
-                        <label for="gender-select">GENDER</label>
-                        <select name="gender" id="breed-select" onChange={this.handleChange}>
-                            <option value=''>ALL GENDERS</option>
-                            {gender.map(gender => <option value={gender}>{gender}</option>)}
-                        </select>
+                        <FilterSelect
+                            name={'location'}
+                            id={'location-select'}
+                            onChange={this.handleChange}
+                            option={locations.map(locations => <option value={locations}>{locations}</option>)}
+                            initialOption={'ALL LOCATIONS'}
+                            labelTitle={'LOCATION'}
+                        />
+                        <FilterSelect
+                            name={'petType'}
+                            id={'pet-type-select'}
+                            onChange={this.handleChange}
+                            option={petType.map(petType => <option value={petType}>{petType}</option>)}
+                            initialOption={'ALL PET TYPES'}
+                            labelTitle={'PET TYPE'}
+                        />
+                        <FilterSelect
+                            name={'breed'}
+                            id={'breed-select'}
+                            onChange={this.handleChange}
+                            option={breed.map(breed => <option value={breed}>{breed}</option>)}
+                            initialOption={'ALL BREED TYPES'}
+                            labelTitle={'BREED'}
+                        />
+                        <FilterSelect
+                            name={'gender'}
+                            id={'gender-select'}
+                            onChange={this.handleChange}
+                            option={gender.map(gender => <option value={gender}>{gender}</option>)}
+                            initialOption={'ALL GENDERS'}
+                            labelTitle={'GENDER'}
+                        />
                     </div>
 
                     <section className="card-list">
