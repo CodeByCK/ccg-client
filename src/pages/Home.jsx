@@ -1,7 +1,9 @@
 import React, { Fragment, Component } from 'react'
 import axios from 'axios'
+
 import PuppyCard from '../components/common/PuppyCard'
 import FilterSelect from '../components/common/FilterSelect'
+import Navbar from '../components/Navbar/Navbar'
 
 
 class Home extends Component {
@@ -46,7 +48,7 @@ class Home extends Component {
         return (
             <Fragment>
                 <section className="hero">
-                    <nav className="nav">THIS IS THE NAVBAR</nav>
+                    <Navbar />
                 </section>
 
                 <section className="av-section">

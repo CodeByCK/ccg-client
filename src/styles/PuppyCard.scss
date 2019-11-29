@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
+    @media screen and (max-width: 959px){justify-content: space-evenly;}
+
     
 }
 
@@ -62,6 +64,10 @@
         color: white;
         border-radius: 5px;
         font-size: 0.9em;
+    }
+
+    .warning-text{
+        padding: 100px;
     }
 }
 }

@@ -23,7 +23,7 @@ const PuppyCard = ({ data }) => {
                         </div>
                     </div>
                 )
-            }) : <h1>No Puppies</h1>}
+            }) : <h1 className="warning-text">No Puppies</h1>}
         </Fragment>
     )
 }

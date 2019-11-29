@@ -19,21 +19,68 @@ html,body {
     height: 525px;
     background-size: cover;
     background-position: center;
+    widows: 100%;
+
+    @media only screen and (max-width: 411px){
+        background-image: url('../assets/images/hero-mbl.jpg');
+    }
 
     .nav{
-        padding: 0 200px;
+        padding: 20px 200px;
+        height: 75px;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         color: white;
+
+        @media screen and (min-width: 1360px){padding: 20px 200px}
+        @media screen and (max-width: 1159px){padding: 20px 50px}
+        @media screen and (max-width: 1102px){padding: 20px 20px}
+        @media screen and (max-width: 614px){flex-direction: column;}
+
+        ul{
+            display: flex;
+            text-decoration: none;
+            width: max-content;
+            list-style-type:none;
+            font-size: 1.2em;
+            @media screen and (max-width: 614px){font-size: 16px;}
+
+            li{
+                width: max-content;
+                margin: 15px;
+                cursor: pointer;
+
+                &::after{
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 5px;
+                    background: $secondary-clr;
+                    transition: width .3s;
+                }
+
+                &:hover::after {
+                    width: 100%;
+                    
+                }
+                @media screen and (max-width: 614px){margin: 0 15px 0 0}
+            }
+        }
     }
 }
 
 .av-section{
     height:150px;
-    padding:0 200px;
+    padding:0 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: $primary-clr;
+
+    @media screen and (min-width: 1360px){padding: 0 200px}
+    @media screen and (max-width: 1159px){padding: 0 50px}
+    @media screen and (max-width: 1102px){padding: 0 0px}
 
     .section-title{
         height: 100%;
@@ -50,7 +97,11 @@ html,body {
 }
 
 .filter-wrapper{
-    padding: 0 200px;
+    padding: 0 100px;
+
+    @media screen and (min-width: 1360px){padding: 0 200px}
+    @media screen and (max-width: 1159px){padding: 0 50px}
+    @media screen and (max-width: 1102px){padding: 0 0px}
 
     .filter{
         display: flex;
@@ -59,6 +110,8 @@ html,body {
         height: 50px;
         padding: 0 20px;
         color: white;
+
+        @media screen and (max-width: 959px){height: 165px; flex-direction: column;}
 
         span{
             font-weight: bold;
