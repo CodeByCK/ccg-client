@@ -1,0 +1,59 @@
+.card-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px;
+    height: 370px;
+    max-height:400px;
+    width: 300px;
+    color: $primary-clr;
+    border-radius: 10px;
+    box-shadow: 0px 0px 31px -12px rgba(0,0,0,0.35);
+
+    img{
+        width: 100%;
+    }
+
+    .card-container{
+    padding: 0 10px;
+
+    .card-puppy-details {
+        padding: 5px 0;
+
+        span{
+        font-size: 0.9em;
+        font-weight: 300;
+        text-align: center;
+        }
+
+    }
+
+    hr {
+        border-top:1px dotted $primary-clr;
+        width: 100%;
+    }
+
+    h3{
+        font-size: 1.5em;
+        height: 60px;
+
+        span{
+        font-weight: 300
+        }
+    }
+
+    .card-button{
+        background-color: $secondary-clr;
+        padding: 3px 15px;
+        color: white;
+        border-radius: 15px;
+        font-size: 0.9em;
+    }
+}
+}
