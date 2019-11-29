@@ -30,8 +30,8 @@ const PuppyDetails = ({ location: { state: { PetName, Breed, Color, Location, Ge
                             </ul>
 
                             <div className="petInfo-button">
-                                <button>BUY NOW</button>
-                                <button>CALL IN TO SCHEDULE</button>
+                                <button><i class="fa fa-info-circle" /> request more info</button>
+                                <button><i class="fa fa-phone" /> call to reserve</button>
                             </div>
                         </div>
                     </div>

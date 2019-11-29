@@ -7,7 +7,7 @@
 
     .petInfo-container{
         padding: 20px 200px;
-        @media screen and (min-width: 1360px){padding: 0 200px}
+        @media screen and (min-width: 1360px){padding: 0 20%}
         @media screen and (max-width: 1159px){padding: 0 50px}
         @media screen and (max-width: 1102px){padding: 0 50px}
         @media screen and (max-width: 411px){padding: 0;}
@@ -67,6 +67,7 @@
                         height: 60px;
                         width: 180px;
                         border-radius: 6px;
+                        font-size: 0.85em;
                         font-weight: 600;
                         transition: ease .25s;
                         cursor: pointer;
