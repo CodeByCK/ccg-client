@@ -45,8 +45,6 @@ class Home extends Component {
                     </div>
                 </section>
 
-
-
                 {/* FILTER */}
                 <section className="filter-wrapper">
                     <div className="filter">
@@ -81,29 +79,10 @@ class Home extends Component {
                     </div>
 
 
-                    {/* CARD LISTS */}
+
                     <section className="card-list">
-                        {this.state.availablePuppies.map((dog) => {
-                            let backUp = 'https://www.petlandflorida.com/wp-content/themes/petland/assets/images/no-available.png'
-
-                            return (
-                                <PuppyCard
-                                    key={dog.PetId}
-                                    pic={dog.Photo === null ? backUp : dog.Photo.BaseUrl + dog.Photo.Size300}
-                                    type={dog.PetType}
-                                    refId={dog.ReferenceNumber}
-                                    name={dog.PetName}
-                                    breed={dog.BreedName}
-                                    gender={dog.Gender}
-                                    birth={dog.BirthDate}
-                                    location={dog.Location}
-                                />
-                            )
-                        })}
+                        <PuppyCard data={this.state.availablePuppies} />
                     </section>
-
-
-
 
                 </section>
             </Fragment>

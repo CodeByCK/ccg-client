@@ -1,23 +1,30 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
-const PuppyCard = ({ pic, type, gender, refId, birth, name, location, breed }) => {
+const PuppyCard = ({ data }) => {
+    let backUp = 'https://www.petlandflorida.com/wp-content/themes/petland/assets/images/no-available.png'
     return (
-        <div className="card-wrapper">
-            <img src={pic}></img>
-            <div className="card-container">
-                <div className="card-puppy-details">
-                    <span>{type} • {gender} • REF ID: {refId} • {birth}</span>
-                </div>
-                <hr></hr>
+        <Fragment>
+            {data.map((dog) => {
+                return (
+                    <div className="card-wrapper" key={dog.PetId}>
+                        <img src={dog.Photo === null ? backUp : dog.Photo.BaseUrl + dog.Photo.Size300} />
+                        <div className="card-container">
+                            <div className="card-puppy-details">
+                                <span>{dog.PetType} • {dog.Gender} • REF ID: {dog.ReferenceNumber} • {dog.BirthDate}</span>
+                            </div>
+                            <hr></hr>
 
-                <div>
-                    <h3>{name} • <span>{breed}</span></h3>
-                </div>
-                <span className="card-button">
-                    <i class="fa fa-map-marker" /> <strong>Location:</strong> {location}
-                </span>
-            </div>
-        </div>
+                            <div>
+                                <h3>{dog.PetName} • <span>{dog.BreedName}</span></h3>
+                            </div>
+                            <span className="card-button">
+                                <i class="fa fa-map-marker" /> <strong>Location:</strong> {dog.Location}
+                            </span>
+                        </div>
+                    </div>
+                )
+            })}
+        </Fragment>
     )
 }
 export default PuppyCard
