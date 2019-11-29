@@ -1,13 +1,16 @@
 import React, { Fragment, Component } from 'react'
 import axios from 'axios'
 import PuppyCard from '../components/common/PuppyCard'
+import Loader from 'react-loader-spinner'
 
 
 class Home extends Component {
     state = {
         availablePuppies: [],
-        filteredPuppies: [],
-
+        location: '',
+        petType: '',
+        breed: '',
+        gender: ''
     }
 
     componentDidMount() {
@@ -21,9 +24,7 @@ class Home extends Component {
             }).catch(err => console.log("ERROR, No Response from Pet Land API"))
     }
 
-    handleChange = (e) => {
-        console.log('You Selected: ', e.target.value)
-    }
+    handleChange = (e) => { this.setState({ [e.target.name]: e.target.value }) }
 
 
     render() {
@@ -31,6 +32,11 @@ class Home extends Component {
         let petType = [...new Set(this.state.availablePuppies.map(x => x.PetType))]
         let breed = [...new Set(this.state.availablePuppies.map(x => x.BreedName))]
         let gender = [...new Set(this.state.availablePuppies.map(x => x.Gender))]
+
+        let filteredDog = this.state.availablePuppies.filter((dog) => {
+            return dog.Location.includes(this.state.location)
+        })
+
 
         return (
             <Fragment>
@@ -51,37 +57,33 @@ class Home extends Component {
                         <span> <i class="fa fa-filter"></i> Filter By:</span>
 
                         <label for="location-select">LOCATION</label>
-                        <select
-                            name="location"
-                            id="location-select"
-                            onChange={this.handleChange}
-                        >
+                        <select name="location" id="location-select" onChange={this.handleChange}>
                             <option value=''>ALL LOCATIONS</option>
                             {locations.map(locations => <option value={locations}>{locations}</option>)}
                         </select>
+
+
                         <label for="pet-type-select">PET TYPE</label>
-                        <select name="pet-type" id="pet-type-select">
+                        <select name="petType" id="pet-type-select" onChange={this.handleChange}>
                             <option value=''>ALL PET TYPES</option>
                             {petType.map(petType => <option value={petType}>{petType}</option>)}
                         </select>
 
                         <label for="breed-select">BREED</label>
-                        <select name="breed" id="breed-select">
+                        <select name="breed" id="breed-select" onChange={this.handleChange}>
                             <option value=''>ALL PET TYPES</option>
                             {breed.map(breed => <option value={breed}>{breed}</option>)}
                         </select>
 
-                        <label for="gender-select">BREED</label>
-                        <select name="gender" id="breed-select">
+                        <label for="gender-select">GENDER</label>
+                        <select name="gender" id="breed-select" onChange={this.handleChange}>
                             <option value=''>ALL GENDERS</option>
                             {gender.map(gender => <option value={gender}>{gender}</option>)}
                         </select>
                     </div>
 
-
-
                     <section className="card-list">
-                        <PuppyCard data={this.state.availablePuppies} />
+                        <PuppyCard data={filteredDog} />
                     </section>
 
                 </section>
