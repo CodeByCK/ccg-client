@@ -16,8 +16,9 @@ html,body {
 
 .hero{
     background-image: url('../assets/images/hero-dsk.jpg');
-    height: 600px;
+    height: 525px;
     background-size: cover;
+    background-position: center;
 
     .nav{
         padding: 0 200px;
