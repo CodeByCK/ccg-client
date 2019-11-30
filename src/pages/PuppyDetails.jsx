@@ -28,7 +28,6 @@ const PuppyDetails = ({ location: { state: { PetName, Breed, Color, Location, Ge
                                 <li><strong>Reference #:</strong> {RefId}</li>
                                 <li><strong>Status:</strong> {Status}</li>
                             </ul>
-
                             <div className="petInfo-button">
                                 <button><i class="fa fa-info-circle" /> request more info</button>
                                 <button><i class="fa fa-phone" /> call to reserve</button>

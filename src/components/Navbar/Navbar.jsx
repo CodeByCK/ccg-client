@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
     return (
         <Fragment>
-            <nav className="nav">
+            <nav className="nav fade-in">
                 <a href="/">
                     <img src='https://www.petlandflorida.com/wp-content/themes/petland/styles/assets/images/shared/logo.png' />
                 </a>

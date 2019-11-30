@@ -7,24 +7,22 @@ const PuppyCard = ({ data }) => {
         <Fragment>
             {data.length > 0 ? data.map((dog) => {
                 return (
-                    <Link
-                        to={{
-                            pathname: `/pet/${dog.PetId}`,
-                            state: {
-                                PetName: dog.PetName,
-                                Breed: dog.BreedName,
-                                Color: dog.Coloring,
-                                Location: dog.Location,
-                                Gender: dog.Gender,
-                                Birth: dog.BirthDate,
-                                RefId: dog.ReferenceNumber,
-                                Status: dog.Status,
-                                Photo: dog.Photo === null ? backUp : dog.Photo.BaseUrl + dog.Photo.Size500
-                            }
-                        }}
-                        style={{ textDecoration: 'none' }}>
+                    <Link to={{
+                        pathname: `/pet/${dog.PetId}`,
+                        state: {
+                            PetName: dog.PetName,
+                            Breed: dog.BreedName,
+                            Color: dog.Coloring,
+                            Location: dog.Location,
+                            Gender: dog.Gender,
+                            Birth: dog.BirthDate,
+                            RefId: dog.ReferenceNumber,
+                            Status: dog.Status,
+                            Photo: dog.Photo === null ? backUp : dog.Photo.BaseUrl + dog.Photo.Size500
+                        }
+                    }} style={{ textDecoration: 'none' }}>
 
-                        <div className="card-wrapper" key={dog.PetId}>
+                        <div className="card-wrapper fade-in" key={dog.PetId}>
                             <img src={dog.Photo === null ? backUp : dog.Photo.BaseUrl + dog.Photo.Size300} />
                             <div className="card-container">
                                 <div className="card-puppy-details">
@@ -42,7 +40,11 @@ const PuppyCard = ({ data }) => {
                         </div>
                     </Link>
                 )
-            }) : <h1 className="warning-text">No Puppies</h1>}
+            }) :
+                <div className="warning-wrapper">
+                    <h1 className="warning-text">We're sorry, no pet available.</h1>
+                </div>
+            }
         </Fragment>
     )
 }

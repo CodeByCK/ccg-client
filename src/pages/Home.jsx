@@ -1,9 +1,9 @@
-import React, { Fragment, Component } from 'react'
+import React, { Fragment, Component, Suspense, lazy } from 'react'
 import axios from 'axios'
 
-import PuppyCard from '../components/common/PuppyCard'
 import FilterSelect from '../components/common/FilterSelect'
 import Navbar from '../components/Navbar/Navbar'
+const PuppyCard = lazy(() => import('../components/common/PuppyCard'))
 
 
 class Home extends Component {
@@ -96,9 +96,11 @@ class Home extends Component {
                     </div>
 
                     <section className="card-list">
-                        <PuppyCard
-                            data={filterDogs(this.state.location, this.state.petType, this.state.breed, this.state.gender)}
-                        />
+                        <Suspense fallback={<div style={{ marginTop: '20px' }}>...Loading</div>}>
+                            <PuppyCard
+                                data={filterDogs(this.state.location, this.state.petType, this.state.breed, this.state.gender)}
+                            />
+                        </Suspense>
                     </section>
 
                 </section>

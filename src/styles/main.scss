@@ -1,6 +1,7 @@
 @import '_config';
 @import 'PuppyCard';
 @import 'PuppyDetails';
+@import 'animations';
 
 html,body {
     margin: 0;
@@ -33,6 +34,7 @@ html,body {
         align-items: center;
         justify-content: space-between;
         color: white;
+        transition: linear 1s;
 
         @media screen and (min-width: 1360px){padding: 20px 200px}
         @media screen and (max-width: 1159px){padding: 20px 50px}
